@@ -16,13 +16,8 @@
 
 # ------------- Beginning of inital code --------------------
 
-# this is just for now, eventually will put into csv list in some way
+# this is just for now, eventually will put into csv or json list in some way
     # can you store the dictionary keys uppercased? or can I just return that later? 
-hp_charachter_dict = {
-                    'harry potter': 'The Boy Who lived. Defeated Lord Voldemort. Sorted into Gryffindor at Hogwarts.',
-                    'hermionie granger': 'Cleverest girl in her year at Hogwarts. Harry Potter\'s friend. Sorted into Gryffindor.',
-                    'ron weasley': 'Harry Potter\'s best friend. One of 7 Weasley children. Sorted into Gryffindor at Hogwarts'
-                    } 
 hp_charachter_list = [
                         {
                             'name': 'harry potter',
@@ -42,8 +37,18 @@ hp_charachter_list = [
                         },
                         {
                             'name': 'draco malfoy',
-                            'hogwarts_house': 'slytherin',
+                            'hogwarts_house': 'Slytherin',
                             'info': 'Pure-blood snob and only son of Lucius and Narcissa. Harry Potter\'s nemesis'
+                        },
+                        {
+                            'name': 'ginny weasley',
+                            'hogwarts_house' : 'Gryffindor',
+                            'info': 'Talented witch, only daughter in the Weasley family. Married to Harry Potter'
+                        },
+                        {
+                            'name': 'neville longbottom',
+                            'hogwarts_house': 'Gryffindor',
+                            'info': 'in the same year as Harry and his crew. Instrumental to the downfall of Lord Voldemort, killed his snake, Nagini.'
                         }
                      ]       
 
@@ -57,7 +62,7 @@ def capitalize_name (string):
 print('~~~ Welcome to the Harry Potter Lookup Program! ~~~')
 print(""" 
                                          _ __
-         ___                             | '   \\
+         ___                             | '  \\
     ___  \ /  ___         ,'\_           | .-. \        /|
     \ /  | |,'__ \  ,'\_  |   \          | | | |      ,' |_   /|
   _ | |  | |\/  \ \ |   \ | |\_|    _    | |_| |   _ '-. .-',' |_   _
@@ -70,7 +75,7 @@ print("""
          /_\           `------'        \ |   AND        `.\  | |  `._,' /_ \\
                                         \|       THE          `. \\
                                             
-                                            CHARACHTER LOOKUP PROGRAM!
+                                            CHARACTER LOOKUP PROGRAM!
 
                                             by: Heather Ortega McMillan 
 
@@ -83,13 +88,13 @@ while program_open == True:
         
     while search_name.lower() not in [name['name'] for name in hp_charachter_list]:
         #if a valid name is not entered, user prompted to enter another name
-        ## add printing a list of available charachters
+        ## add printing a list of available charachters <----
         search_name = input('Sorry that charachter is not in the database\nEnter another name: ')
 
-    if search_name.lower() in [name['name'] for name in hp_charachter_list]:   # < -- eventually need to figure out how to search for partial names (i.e. 'harry')
+    if search_name.lower() in [name['name'] for name in hp_charachter_list]:   # <-- eventually need to figure out how to search for partial names (i.e. 'harry')
         print('Ok I will tell you more about ', capitalize_name(search_name))
         # print out the 'info' key related to that charachter name
-        # eventually figure out how to specify type of info 
+        # eventually figure out how to specify type of info <----
         for person in hp_charachter_list:
             if person['name'] == search_name.lower():
                 print("{name} : {info}".format(name = capitalize_name(person['name']), info = person['info']))
@@ -105,7 +110,7 @@ while program_open == True:
     if more_info_var.lower() in ('y', 'yes'):
         for person in hp_charachter_list:
             if person['name'] == search_name.lower():
-                print("They were in {hogwarts_house} house".format(**person))
+                print("They were in {hogwarts_house} house".format(**person)) #some cool dictionary formatting I found
     #if they say no continue on
     else:
         pass

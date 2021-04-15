@@ -80,6 +80,11 @@ program_open = True
 while program_open == True:
     # user should type in name here. capitalized names don't matter but name all in one. 'first last'. 
     search_name = input('Which Harry Potter Charachter would you like to know more about?: ')
+        
+    while search_name.lower() not in [name['name'] for name in hp_charachter_list]:
+        #if a valid name is not entered, user prompted to enter another name
+        ## add printing a list of available charachters
+        search_name = input('Sorry that charachter is not in the database\nEnter another name: ')
 
     if search_name.lower() in [name['name'] for name in hp_charachter_list]:   # < -- eventually need to figure out how to search for partial names (i.e. 'harry')
         print('Ok I will tell you more about ', capitalize_name(search_name))
@@ -88,10 +93,6 @@ while program_open == True:
         for person in hp_charachter_list:
             if person['name'] == search_name.lower():
                 print("{name} : {info}".format(name = capitalize_name(person['name']), info = person['info']))
-    else:
-        #if a valid name is not entered, user prompted to enter another name
-        ## add printing a list of available charachters
-        search_name = input('Sorry that charachter is not in the database\nEnter another name: ')
     
     #ask about the same charachter's house (eventually add more inputs here (i.e. House, birthday, etc))
     more_info_var = input('Would you like to know their Hogwarts House?: ')

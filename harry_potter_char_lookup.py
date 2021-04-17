@@ -18,40 +18,47 @@
 
 # this is just for now, eventually will put into csv or json list in some way
     # can you store the dictionary keys uppercased? or can I just return that later? 
+
 hp_charachter_list = [
                         {
                             'name': 'harry potter',
+                            'id': '001',
                             'hogwarts_house': 'Gryffindor',
                             'info': 'The Boy Who lived. Defeated Lord Voldemort.'
 
                         },  
                         {
                             'name': 'hermione granger',
+                            'id': '002',
                             'hogwarts_house': 'Gryffindor',
                             'info': 'Cleverest girl in her year at Hogwarts.'
                         },
                         {
                             'name': 'ron weasley',
+                            'id': '003',
                             'hogwarts_house': 'Gryffindor',
                             'info': 'Harry Potter\'s best friend. One of 7 Weasley children.'
                         },
                         {
                             'name': 'draco malfoy',
+                            'id': '003',
                             'hogwarts_house': 'Slytherin',
                             'info': 'Pure-blood snob and only son of Lucius and Narcissa. Harry Potter\'s nemesis'
                         },
                         {
                             'name': 'ginny weasley',
+                            'id': '004',
                             'hogwarts_house' : 'Gryffindor',
                             'info': 'Talented witch, only daughter in the Weasley family. Married to Harry Potter'
                         },
                         {
                             'name': 'neville longbottom',
+                            'id': '005',
                             'hogwarts_house': 'Gryffindor',
                             'info': 'in the same year as Harry and his crew. Instrumental to the downfall of Lord Voldemort, killed his snake, Nagini.'
                         }
                      ]       
-
+import time
 def capitalize_name (string):
     """
     This function splits a string and capitalizes every element. input is string, output is string.
@@ -97,9 +104,11 @@ while program_open == True:
         # eventually figure out how to specify type of info <----
         for person in hp_charachter_list:
             if person['name'] == search_name.lower():
+                time.sleep(2.0)
                 print("{name} : {info}".format(name = capitalize_name(person['name']), info = person['info']))
     
     #ask about the same charachter's house (eventually add more inputs here (i.e. House, birthday, etc))
+    time.sleep(2.0)
     more_info_var = input('Would you like to know their Hogwarts House?: ')
 
     #check for valid input (will have to update if dict key search is added)
@@ -116,6 +125,7 @@ while program_open == True:
         pass
         
     # ask if the user wants to coninue
+    time.sleep(2.0)
     continue_var = input('Would you like to know about a different charachter?: ')
     
     #ensure user gives yes or no input

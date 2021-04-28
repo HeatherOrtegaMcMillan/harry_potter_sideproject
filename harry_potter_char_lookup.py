@@ -91,8 +91,17 @@ print("""
 program_open = True
 while program_open == True:
     # user should type in name here. capitalized names don't matter but name all in one. 'first last'. 
-    search_name = input('Which Harry Potter Charachter would you like to know more about?: ')
-        
+    search_name = input('Which Harry Potter Charachter would you like to know more about?\n(Type a single letter to see list of names beginning with that letter) : ')
+    
+    # add printing a list of charachters who's first name begins with the letter entered
+    if len(search_name) == 1:
+        letter = search_name.lower()
+        names = [person['name'] for person in hp_charachter_list if person['name'].startswith(letter)]
+        if len(names) == 0:
+            print('There are no charachters in the database that start with that letter')
+        for name in names:
+            print(name) 
+        search_name = (input('Please enter a charachter: '))
     while search_name.lower() not in [name['name'] for name in hp_charachter_list]:
         #if a valid name is not entered, user prompted to enter another name
         ## add printing a list of available charachters <----

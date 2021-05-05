@@ -56,6 +56,19 @@ hp_charachter_list = [
                             'id': '005',
                             'hogwarts_house': 'Gryffindor',
                             'info': 'in the same year as Harry and his crew. Instrumental to the downfall of Lord Voldemort, killed his snake, Nagini.'
+                        },
+                        {
+                            'name': 'severus snape',
+                            'id': '005',
+                            'hogwarts_house': 'Slytherin',
+                            'info': 'Potions master at hogwarts until 1996. Death Eater double agent for Albus Dumbledore. Hopelessly in love with Lilly Evans.'
+                        },
+                        {
+                            'name': 'minerva mcgonagall',
+                            'id': '006',
+                            'hogwarts_house': 'Gryffindor',
+                            'info': 'Transfiguration professor at Hogwarts and deputy headmistress. Animagus, can turn into a cat.'
+
                         }
                      ]       
 import time
@@ -145,6 +158,12 @@ while program_open == True:
     # if they do not close the program
     if continue_var.lower() in ('n', 'no'):
         print('Ok goodbye!')
+        print("""
+          ___                      ___  
+         (o o)                    (o o) 
+        (  V  ) Mischief Managed (  V  )
+        --m-m----------------------m-m--
+        """)
         program_open = False
 
 

@@ -57,9 +57,10 @@ while program_open == True:
     search_name = input('Which Harry Potter Charachter would you like to know more about?\n(Type a single letter to see list of names beginning with that letter) : ')
     
     # add printing a list of charachters who's first name begins with the letter entered
-    if len(search_name) == 1:
+    while len(search_name) == 1:
         letter = search_name.lower()
-        names = [person['name'] for person in hp_charachter_list if person['name'].startswith(letter)]
+        # print out capitalized names of all people who's first name with the letter inputted
+        names = [capitalize_name(person['name']) for person in hp_charachter_list if person['name'].startswith(letter)]
         if len(names) == 0:
             print('There are no charachters in the database that start with that letter')
         for name in names:
@@ -67,7 +68,6 @@ while program_open == True:
         search_name = (input('Please enter a charachter: '))
     while search_name.lower() not in [name['name'] for name in hp_charachter_list]:
         #if a valid name is not entered, user prompted to enter another name
-        ## add printing a list of available charachters <----
         search_name = input('Sorry that charachter is not in the database\nEnter another name: ')
 
     if search_name.lower() in [name['name'] for name in hp_charachter_list]:   # <-- eventually need to figure out how to search for partial names (i.e. 'harry')
@@ -105,7 +105,7 @@ while program_open == True:
         continue_var = input('Please type y or n: ')
     
     
-    # if they do not close the program
+    # if they do not, close the program
     if continue_var.lower() in ('n', 'no'):
         print('Ok goodbye!')
         print("""

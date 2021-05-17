@@ -14,64 +14,9 @@
         # i.e. People who lived and died by house or some other parameter
 
 
-# ------------- Beginning of inital code --------------------
-
-# this is just for now, eventually will put into csv or json list in some way
-    # can you store the dictionary keys uppercased? or can I just return that later? 
-
-hp_charachter_list = [
-                        {
-                            'name': 'harry potter',
-                            'id': '001',
-                            'hogwarts_house': 'Gryffindor',
-                            'info': 'The Boy Who lived. Defeated Lord Voldemort.'
-
-                        },  
-                        {
-                            'name': 'hermione granger',
-                            'id': '002',
-                            'hogwarts_house': 'Gryffindor',
-                            'info': 'Cleverest girl in her year at Hogwarts.'
-                        },
-                        {
-                            'name': 'ron weasley',
-                            'id': '003',
-                            'hogwarts_house': 'Gryffindor',
-                            'info': 'Harry Potter\'s best friend. One of 7 Weasley children.'
-                        },
-                        {
-                            'name': 'draco malfoy',
-                            'id': '003',
-                            'hogwarts_house': 'Slytherin',
-                            'info': 'Pure-blood snob and only son of Lucius and Narcissa. Harry Potter\'s nemesis'
-                        },
-                        {
-                            'name': 'ginny weasley',
-                            'id': '004',
-                            'hogwarts_house' : 'Gryffindor',
-                            'info': 'Talented witch, only daughter in the Weasley family. Married to Harry Potter'
-                        },
-                        {
-                            'name': 'neville longbottom',
-                            'id': '005',
-                            'hogwarts_house': 'Gryffindor',
-                            'info': 'in the same year as Harry and his crew. Instrumental to the downfall of Lord Voldemort, killed his snake, Nagini.'
-                        },
-                        {
-                            'name': 'severus snape',
-                            'id': '005',
-                            'hogwarts_house': 'Slytherin',
-                            'info': 'Potions master at hogwarts until 1996. Death Eater double agent for Albus Dumbledore. Hopelessly in love with Lilly Evans.'
-                        },
-                        {
-                            'name': 'minerva mcgonagall',
-                            'id': '006',
-                            'hogwarts_house': 'Gryffindor',
-                            'info': 'Transfiguration professor at Hogwarts and deputy headmistress. Animagus, can turn into a cat.'
-
-                        }
-                     ]       
+# ------------- Beginning of inital code --------------------     
 import time
+import pandas as pd
 def capitalize_name (string):
     """
     This function splits a string and capitalizes every element. input is string, output is string.
@@ -100,6 +45,11 @@ print("""
                                             by: Heather Ortega McMillan 
 
 """)
+# use pandas to read in csv file of charachter list
+df = pd.read_csv('charachter_list.csv')
+# use pandas to_dict function with the arguement records, to turn into dictionary
+# effectively re creating the dictionary from previous versions
+hp_charachter_list = df.to_dict('records')
 # this value stays true unless the user wants to quit the program (see continue_var)
 program_open = True
 while program_open == True:

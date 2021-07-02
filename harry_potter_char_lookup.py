@@ -17,6 +17,8 @@
 # ------------- Beginning of inital code --------------------     
 import time
 import pandas as pd
+import helper_functions as h
+
 def capitalize_name (string):
     """
     This function splits a string and capitalizes every element. input is string, output is string.
@@ -54,21 +56,22 @@ hp_charachter_list = df.to_dict('records')
 program_open = True
 while program_open == True:
     # user should type in name here. capitalized names don't matter but name all in one. 'first last'. 
-    search_name = input('Which Harry Potter Charachter would you like to know more about?\n(Type a single letter to see list of names beginning with that letter) : ')
+    search_name = input('''Which Harry Potter Character would you like to know more about?
+                \n(Type a single letter to see list of names beginning with that letter) : ''')
     
-    # add printing a list of charachters who's first name begins with the letter entered
+    # add printing a list of characters who's first name begins with the letter entered
     while len(search_name) == 1:
         letter = search_name.lower()
         # print out capitalized names of all people who's first name with the letter inputted
         names = [capitalize_name(person['name']) for person in hp_charachter_list if person['name'].startswith(letter)]
         if len(names) == 0:
-            print('There are no charachters in the database that start with that letter')
+            print('There are no characters in the database that start with that letter')
         for name in names:
             print(name) 
         search_name = (input('Please enter a charachter: '))
     while search_name.lower() not in [name['name'] for name in hp_charachter_list]:
         #if a valid name is not entered, user prompted to enter another name
-        search_name = input('Sorry that charachter is not in the database\nEnter another name: ')
+        search_name = input('Sorry that character is not in the database\nEnter another name: ')
 
     if search_name.lower() in [name['name'] for name in hp_charachter_list]:   # <-- eventually need to figure out how to search for partial names (i.e. 'harry')
         print('Ok I will tell you more about ', capitalize_name(search_name))
@@ -79,7 +82,7 @@ while program_open == True:
                 time.sleep(2.0)
                 print("{name} : {info}".format(name = capitalize_name(person['name']), info = person['info']))
     
-    #ask about the same charachter's house (eventually add more inputs here (i.e. House, birthday, etc))
+    #ask about the same character's house (eventually add more inputs here (i.e. House, birthday, etc))
     time.sleep(2.0)
     more_info_var = input('Would you like to know their Hogwarts House?: ')
 
@@ -87,7 +90,7 @@ while program_open == True:
     while more_info_var.lower() not in ('y', 'yes', 'n', 'no'):
         more_info_var = input('Please type y or n: ')
 
-    #if they say yes print the house the charachter was in
+    #if they say yes print the house the character was in
     if more_info_var.lower() in ('y', 'yes'):
         for person in hp_charachter_list:
             if person['name'] == search_name.lower():
@@ -96,9 +99,9 @@ while program_open == True:
     else:
         pass
         
-    # ask if the user wants to coninue
+    # ask if the user wants to continue 
     time.sleep(2.0)
-    continue_var = input('Would you like to know about a different charachter?: ')
+    continue_var = input('Would you like to know about a different character?: ')
     
     #ensure user gives yes or no input
     while continue_var.lower() not in ('y', 'yes', 'n', 'no'):

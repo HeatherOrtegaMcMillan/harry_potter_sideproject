@@ -47,11 +47,11 @@ print("""
                                             by: Heather Ortega McMillan 
 
 """)
-# use pandas to read in csv file of charachter list
-df = pd.read_csv('charachter_list.csv')
-# use pandas to_dict function with the arguement records, to turn into dictionary
+# use pandas to read in csv file of character list
+df = pd.read_csv('character_list.csv')
+# use pandas to_dict function with the argument records, to turn into dictionary
 # effectively re creating the dictionary from previous versions
-hp_charachter_list = df.to_dict('records')
+hp_character_list = df.to_dict('records')
 # this value stays true unless the user wants to quit the program (see continue_var)
 program_open = True
 while program_open == True:
@@ -63,21 +63,21 @@ while program_open == True:
     while len(search_name) == 1:
         letter = search_name.lower()
         # print out capitalized names of all people who's first name with the letter inputted
-        names = [capitalize_name(person['name']) for person in hp_charachter_list if person['name'].startswith(letter)]
+        names = [capitalize_name(person['name']) for person in hp_character_list if person['name'].startswith(letter)]
         if len(names) == 0:
             print('There are no characters in the database that start with that letter')
         for name in names:
             print(name) 
         search_name = (input('Please enter a charachter: '))
-    while search_name.lower() not in [name['name'] for name in hp_charachter_list]:
+    while search_name.lower() not in [name['name'] for name in hp_character_list]:
         #if a valid name is not entered, user prompted to enter another name
         search_name = input('Sorry that character is not in the database\nEnter another name: ')
 
-    if search_name.lower() in [name['name'] for name in hp_charachter_list]:   # <-- eventually need to figure out how to search for partial names (i.e. 'harry')
+    if search_name.lower() in [name['name'] for name in hp_character_list]:   # <-- eventually need to figure out how to search for partial names (i.e. 'harry')
         print('Ok I will tell you more about ', capitalize_name(search_name))
-        # print out the 'info' key related to that charachter name
+        # print out the 'info' key related to that character name
         # eventually figure out how to specify type of info <----
-        for person in hp_charachter_list:
+        for person in hp_character_list:
             if person['name'] == search_name.lower():
                 time.sleep(2.0)
                 print("{name} : {info}".format(name = capitalize_name(person['name']), info = person['info']))
@@ -92,7 +92,7 @@ while program_open == True:
 
     #if they say yes print the house the character was in
     if more_info_var.lower() in ('y', 'yes'):
-        for person in hp_charachter_list:
+        for person in hp_character_list:
             if person['name'] == search_name.lower():
                 print("They were in {hogwarts_house} house".format(**person)) #some cool dictionary formatting I found
     #if they say no continue on

@@ -13,3 +13,8 @@ I am doing this sideproject to learn more about python, maybe learn about web sc
 4. Use info to analyize and answer other questions later on
     - i.e. Breakdown of alliterative names, like Godric Gryffendor 
     - i.e. People who lived and died by house or some other parameter
+5. Turn into downloadable package using pip, for use in the terminal.
+    
+
+### Cleaning the Data
+This process actually took quite a while. I initially found a JSON of data from TheDavidBarton's github (HP Project)[https://github.com/theDavidBarton/the-harry-potter-database/blob/master/resources/characters.json]. And I used **Beautiful Soup** to scrap info from [this website](http://magical-menagerie.com/wizardry/full-character-listing/). I also used **FuzzyWuzzy** to compare the slightly different names in order to add the info that was scraped, to the JSON. 
